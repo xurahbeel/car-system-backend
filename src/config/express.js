@@ -26,11 +26,11 @@ app.use(bearerToken());
 
 app.use(methodOverride());
 const apiRequestLimiterAll = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 90000
 });
 
- app.use(express.static(path.join(__dirname, "../uploads")));
+app.use(express.static(path.join(__dirname, "../uploads")));
 
 app.use("/v1/", apiRequestLimiterAll);
 
@@ -44,8 +44,8 @@ app.use(compression());
 
 app.use('/v1', mainRoutes);
 
-app.get('/', (req ,res,next)=>{
-  res.send("here we are")
+app.get('/', (req, res, next) => {
+  res.send("All ok")
 })
 
 module.exports = app;
